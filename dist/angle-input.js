@@ -96,6 +96,18 @@
       var s = n - (n % step);
       var high = Math.ceil(n / step);
       var low = Math.round(n / step);
+
+      const totalDeg = 360;
+      const degreeLeftOver = totalDeg - max;
+      const degreeSectioned = degreeLeftOver / 2;
+      const upperLimit = totalDeg - degreeSectioned;
+      
+      if(degree > max)
+        if(degree > upperLimit)
+          return min;
+        else 
+          return max
+
       return high >= (n / step)
         ? (high * step == 360) ? 0 : (high * step)
         : low * step;
