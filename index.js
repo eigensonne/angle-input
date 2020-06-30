@@ -64,7 +64,8 @@
     max: 360,
     min: 0,
     step: 1,
-    name: 'angle'
+    name: 'angle',
+    displayFn: (val) => val, 
   };
 
   function lookup(dicts) {
@@ -83,6 +84,7 @@
     var step = +key('step');
     var name = key('name');
     var value = normalize(min);
+    var displayFn = key('displayFn');
 
     accessible($dom);
 
@@ -115,7 +117,7 @@
     
     function updateView() {
       $pivot.style.transform = "rotate(-"+value+"deg)";
-      $input.value = value;
+      $input.value = displayFn(value);
     }
 
     function updateWithEvent(event, done) {
